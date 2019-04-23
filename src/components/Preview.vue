@@ -111,8 +111,9 @@
            /*eslint no-console: ["error", { allow: ["log", "error"] }] */
           console.log('here')
           /*eslint-disable-next-line*/
-          //var cld = cloudinary.Cloudinary.new({ cloud_name: "og-tech", secure: true});
-         // var demoplayer = cld.videoPlayer('video-player');
+          var cld = cloudinary.Cloudinary.new({ cloud_name: "og-tech", secure: true});
+          /*eslint-disable-next-line*/
+         var demoplayer = cld.videoPlayer('video-player');
         }
       }
     }
