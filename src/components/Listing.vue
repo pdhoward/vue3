@@ -18,7 +18,7 @@
         </div>
 
         <template v-for="product in products">
-          <div class="row" style="margin-bottom:20px;">
+          <div class="row" style="margin-bottom:20px;" v-bind:key="product.id">
             <div class="col-sm-2" >
               <p>{{ product.id }}</p>
             </div>
@@ -45,8 +45,11 @@ export default {
         }
       },
       mounted : function(){
+        /*eslint no-console: ["error", { allow: ["log", "error"] }] */
+        console.log(`THIS EXECUTED IN LISTING`)
         axios.get('http://localhost:3128/products').
         then( result => {
+          /*eslint no-console: ["error", { allow: ["log", "error"] }] */
           console.log( result );
           this.products = result.data;
         })

@@ -35,6 +35,7 @@ app.get('/products', multipartMiddleware, function(req, res){
   });
 
   app.get('/getProductInfo/:id', multipartMiddleware, function(req, res){
+    /*eslint no-console: ["error", { allow: ["log", "error"] }] */
     console.log( req.params.id );
     return res.json({
       media:        [
@@ -42,8 +43,7 @@ app.get('/products', multipartMiddleware, function(req, res){
           id:       '0',
           type:     'image',
           url:      'https://static.pexels.com/photos/265631/pexels-photo-265631.jpeg'
-        },
-        [...]
+        },       
         {
           id:       '3',
           type:     'video',

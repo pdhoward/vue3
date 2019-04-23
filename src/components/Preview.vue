@@ -17,10 +17,10 @@
               <ul class="carousel-indicators">
                 <template v-for="single_media in media">
                   <template v-if="single_media.id == 0">
-                    <li data-target="#demo" v-bind:data-slide-to="single_media.id" class="active"></li>
+                    <li data-target="#demo" v-bind:data-slide-to="single_media.id" v-bind:key="single_media.id" class="active"></li>
                   </template>
                   <template v-else>
-                    <li data-target="#demo" v-bind:data-slide-to="single_media.id"></li>
+                    <li data-target="#demo" v-bind:key="single_media.id" v-bind:data-slide-to="single_media.id"></li>
                   </template>
                 </template>
                 <!-- <li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -30,7 +30,7 @@
               <div class="carousel-inner">
                 <template v-for="single_media in media">
                   <template v-if="single_media.id == 0">
-                    <div class="carousel-item active">
+                    <div class="carousel-item active" v-bind:key="single_media.id">
                       <template v-if="single_media.type == 'image'">
                         <img class="img-responsive single-image" v-bind:src="single_media.url"/>
                       </template>
@@ -46,7 +46,7 @@
                     </div>
                   </template>
                   <template v-else>
-                    <div class="carousel-item">
+                    <div class="carousel-item" v-bind:key="single_media.id">
                       <template v-if="single_media.type == 'image'">
                         <img class="img-responsive single-image" v-bind:src="single_media.url"/>
                       </template>
@@ -81,6 +81,7 @@
 
 <script>
     import axios from 'axios'
+    //import cloudinary from 'cloudinary'
 
     export default {
       name: 'Preview',
@@ -93,6 +94,8 @@
         }
       },
       mounted : function(){
+         /*eslint no-console: ["error", { allow: ["log", "error"] }] */
+        console.log(`THIS EXECUTED IN PREVIEW`)
         // now we get all the related infomation for the particular product id
         axios.get(`http://localhost:3128/getProductInfo/${this.$route.params.id}`)
         .then( res => {
@@ -105,9 +108,11 @@
       },
       methods : {
         initializePlayer : function(){
+           /*eslint no-console: ["error", { allow: ["log", "error"] }] */
           console.log('here')
-          var cld = cloudinary.Cloudinary.new({ cloud_name: "og-tech", secure: true});
-          var demoplayer = cld.videoPlayer('video-player');
+          /*eslint-disable-next-line*/
+          //var cld = cloudinary.Cloudinary.new({ cloud_name: "og-tech", secure: true});
+         // var demoplayer = cld.videoPlayer('video-player');
         }
       }
     }
