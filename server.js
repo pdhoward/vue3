@@ -17,13 +17,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 const multipartMiddleware = multipart();
 
 //...
-
+/*
 cloudinary.config({
     cloud_name: 'CLOUDINARY_CLOUD_NAME', 
     api_key: 'CLOUDINARY_API_KEY', 
     api_secret: 'CLOUDINARY_API_SECRET'
 });
-
+*/
 //...
 app.get('/products', multipartMiddleware, function(req, res){
     return res.json([
